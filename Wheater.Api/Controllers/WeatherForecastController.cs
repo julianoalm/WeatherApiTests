@@ -13,11 +13,6 @@ namespace Wheater.Api.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IWeatherServices _weatherServices;
 
@@ -31,6 +26,21 @@ namespace Wheater.Api.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             return _weatherServices.GetAll();
+        }
+
+        [HttpGet("{Name}")]
+        public ActionResult GetByName(string Name)
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                var result = _weatherServices.GetByName(Name);
+                
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest("O parâmetro nome não pode ser nulo");
+            }
         }
     }
 }

@@ -31,7 +31,21 @@ namespace Weather.Services
 
         public WeatherForecast GetByName(string name)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(name))
+            {
+                var rng = new Random();
+                return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+                {
+                    Date = DateTime.Now.AddDays(index),
+                    TemperatureC = rng.Next(-20, 55),
+                    Summary = Summaries[rng.Next(Summaries.Length)]
+                })
+                .ToArray().Where(x => x.Summary == name).FirstOrDefault();
+            }
+            else
+            {
+                throw new Exception("O parâmetro nome não pode ser nulo");
+            }
         }
     }
 }

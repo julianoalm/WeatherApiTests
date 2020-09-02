@@ -13,4 +13,9 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Wheather.Model\Weather.Model.csproj" />
+    <ProjectReference Include="..\Wheather.Services\Weather.Services.csproj" />
+  </ItemGroup>
+
 </Project>

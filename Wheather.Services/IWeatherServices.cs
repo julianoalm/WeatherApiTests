@@ -8,6 +8,6 @@ namespace Weather.Services
     public interface IWeatherServices
     {
         IEnumerable<WeatherForecast> GetAll();
-        IEnumerable<WeatherForecast> GetByName(string name);
+        WeatherForecast GetByName(string name);
     }
 }

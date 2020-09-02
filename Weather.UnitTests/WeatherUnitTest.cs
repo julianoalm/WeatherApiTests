@@ -65,7 +65,7 @@ namespace Weather.UnitTests
         public void Testa_GetByName_Moq()
         {
             var weather = new Mock<IWeatherServices>(MockBehavior.Strict);
-            
+
             WeatherForecast model = new WeatherForecast()
             {
                 Date = DateTime.Now,
@@ -80,6 +80,17 @@ namespace Weather.UnitTests
 
         [Fact]
         [Trait("Teste Unitario", "Juliano")]
+        [Description("Teste passando um nome")]
+        public void Testa_GetByName()
+        {
+            var weather = new WeatherService();
+            var model = weather.GetByName("Cool");
+
+            Assert.IsType<WeatherForecast>(model);
+        }
+
+        [Fact]
+        [Trait("Teste Unitario", "Juliano")]
         [Description("Teste passando um nome vazio")]
         public void Testa_GetByName_Name_Null()
         {
@@ -88,6 +99,49 @@ namespace Weather.UnitTests
             Exception ex = Assert.Throws<Exception>(() => weather.GetByName(""));
 
             Assert.Equal("O parâmetro nome não pode ser nulo", ex.Message);
+        }
+
+        [Fact]
+        [Trait("Teste Unitario", "Juliano")]
+        [Description("Teste propriedade Date")]
+        public void GetDateTest()
+        {
+            WeatherForecast weather = new WeatherForecast();
+            weather.Date = DateTime.Parse("2020-09-02 00:00:00");
+
+            Assert.Contains("2020-09-02 00:00:00", weather.Date.ToString("yyyy-MM-dd HH:mm:ss"));
+        }
+
+        [Fact]
+        [Trait("Teste Unitario", "Juliano")]
+        [Description("Teste propriedade TemperatureC")]
+        public void GetTemperatureCTest()
+        {
+            WeatherForecast weather = new WeatherForecast();
+            weather.TemperatureC = 15;
+
+            Assert.Contains("15", weather.TemperatureC.ToString());
+        }
+
+        [Fact]
+        [Trait("Teste Unitario", "Juliano")]
+        [Description("Teste propriedade TemperatureF")]
+        public void GetTemperatureFTest()
+        {
+            WeatherForecast weather = new WeatherForecast();
+
+            Assert.Contains("32", weather.TemperatureF.ToString());
+        }
+
+        [Fact]
+        [Trait("Teste Unitario", "Juliano")]
+        [Description("Teste propriedade Summary")]
+        public void GetSummaryTest()
+        {
+            WeatherForecast weather = new WeatherForecast();
+            weather.Summary = "Cool";
+
+            Assert.Contains("Cool", weather.Summary);
         }
     }
 }

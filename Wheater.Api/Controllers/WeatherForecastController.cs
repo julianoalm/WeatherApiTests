@@ -10,7 +10,7 @@ using Weather.Services;
 namespace Wheater.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly ILogger<WeatherForecastController> _logger;
@@ -28,10 +28,10 @@ namespace Wheater.Api.Controllers
             return _weatherServices.GetAll();
         }
 
-        [HttpGet("{Name}")]
-        public ActionResult GetByName(string Name)
+        [HttpGet("GetByName/{Name}")]
+        public ActionResult Get(string Name)
         {
-            if (string.IsNullOrEmpty(Name))
+            if (!string.IsNullOrEmpty(Name))
             {
                 var result = _weatherServices.GetByName(Name);
                 

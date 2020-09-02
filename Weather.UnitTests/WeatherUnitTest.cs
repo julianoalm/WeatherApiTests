@@ -77,5 +77,17 @@ namespace Weather.UnitTests
 
             Assert.Equal<WeatherForecast>(model, weather.Object.GetByName("Cool"));
         }
+
+        [Fact]
+        [Trait("Teste Unitario", "Juliano")]
+        [Description("Teste passando um nome vazio")]
+        public void Testa_GetByName_Name_Null()
+        {
+            var weather = new WeatherService();
+
+            Exception ex = Assert.Throws<Exception>(() => weather.GetByName(""));
+
+            Assert.Equal("O parâmetro nome não pode ser nulo", ex.Message);
+        }
     }
 }

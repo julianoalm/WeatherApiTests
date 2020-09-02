@@ -31,7 +31,7 @@ namespace Weather.Services
 
         public WeatherForecast GetByName(string name)
         {
-            if (string.IsNullOrEmpty(name))
+            if (!string.IsNullOrEmpty(name))
             {
                 var rng = new Random();
                 return Enumerable.Range(1, 5).Select(index => new WeatherForecast

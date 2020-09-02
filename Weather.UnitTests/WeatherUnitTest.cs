@@ -4,6 +4,7 @@ using Xunit;
 using Weather.Model;
 using Weather.Services;
 using System.Collections.Generic;
+using Moq;
 
 namespace Weather.UnitTests
 {
@@ -56,6 +57,25 @@ namespace Weather.UnitTests
             model = result[0];
 
             Assert.Contains(model, result);
+        }
+
+        [Fact]
+        [Trait("Teste Unitario", "Juliano")]
+        [Description("Teste utilizando Moq devido ao metodo GetByName não estar pronto")]
+        public void Testa_GetByName_Moq()
+        {
+            var weather = new Mock<IWeatherServices>(MockBehavior.Strict);
+            
+            WeatherForecast model = new WeatherForecast()
+            {
+                Date = DateTime.Now,
+                Summary = "Cool",
+                TemperatureC = 20
+            };
+
+            weather.Setup(w => w.GetByName(It.IsAny<string>())).Returns(() => model);
+
+            Assert.Equal<WeatherForecast>(model, weather.Object.GetByName("Cool"));
         }
     }
 }

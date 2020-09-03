@@ -23,7 +23,7 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ./MyClassesTest/TestResults/coverage.info
+        path-to-lcov: ./Weather.UnitTests/TestResults/coverage.info
     - name: Install dependencies
       run: dotnet restore
     - name: Build

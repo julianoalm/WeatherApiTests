@@ -39,8 +39,8 @@ namespace Weather.UnitTests
 
             List<WeatherForecast> result = new List<WeatherForecast>();
             result.AddRange(_weather.GetAll());
-            
-            Assert.IsType<WeatherForecast>(result[0]);            
+
+            Assert.IsType<WeatherForecast>(result[0]);
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace Weather.UnitTests
         {
             _weather = new WeatherService();
             WeatherForecast model = new WeatherForecast();
-            
+
             List<WeatherForecast> result = new List<WeatherForecast>();
             result.AddRange(_weather.GetAll());
 

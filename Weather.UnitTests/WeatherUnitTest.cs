@@ -78,16 +78,16 @@ namespace Weather.UnitTests
             Assert.Equal<WeatherForecast>(model, weather.Object.GetByName("Cool"));
         }
 
-        [Fact]
-        [Trait("Teste Unitario", "Juliano")]
-        [Description("Teste passando um nome")]
-        public void Testa_GetByName()
-        {
-            var weather = new WeatherService();
-            WeatherForecast model = weather.GetByName("Cool");
+        //[Fact]
+        //[Trait("Teste Unitario", "Juliano")]
+        //[Description("Teste passando um nome")]
+        //public void Testa_GetByName()
+        //{
+        //    var weather = new WeatherService();
+        //    WeatherForecast model = weather.GetByName("Cool");
 
-            Assert.True(model.Summary == "Cool");
-        }
+        //    Assert.True(model.Summary == "Cool");
+        //}
 
         //[Fact]
         //[Trait("Teste Unitario", "Juliano")]

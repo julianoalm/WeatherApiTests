@@ -84,7 +84,7 @@ namespace Weather.UnitTests
         public void Testa_GetByName()
         {
             var weather = new WeatherService();
-            var model = weather.GetByName("Cool");
+            WeatherForecast model = weather.GetByName("Cool");
 
             Assert.IsType<WeatherForecast>(model);
         }

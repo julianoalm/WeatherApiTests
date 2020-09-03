@@ -33,7 +33,7 @@ namespace Wheater.Api.Controllers
         {
             if (!string.IsNullOrEmpty(Name))
             {
-                var result = _weatherServices.GetByName(Name);
+                WeatherForecast result = _weatherServices.GetByName(Name);
                 
                 return Ok(result);
             }
